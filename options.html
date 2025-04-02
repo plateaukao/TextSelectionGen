@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ollama Translator Options</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f5f5f5;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      margin-top: 0;
+      color: #333;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 10px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    button {
+      background: #4285f4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #3367d6;
+    }
+    .status {
+      margin-top: 15px;
+      padding: 8px;
+      border-radius: 4px;
+      text-align: center;
+    }
+    .success {
+      background: #d4edda;
+      color: #155724;
+    }
+    .error {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ollama Translator Options</h1>
+    
+    <div class="form-group">
+      <label for="ollamaUrl">Ollama API URL:</label>
+      <input type="text" id="ollamaUrl" placeholder="http://localhost:11434">
+    </div>
+    
+    <div class="form-group">
+      <label for="model">Model Name:</label>
+      <input type="text" id="model" placeholder="qwen2.5:latest">
+      <small style="color: #666; display: block; margin-top: 5px;">Enter the name of the model you've pulled in Ollama</small>
+    </div>
+    
+    <div class="form-group">
+      <label for="targetLanguage">Target Language:</label>
+      <select id="targetLanguage">
+        <option value="English">English</option>
+        <option value="Spanish">Spanish</option>
+        <option value="French">French</option>
+        <option value="German">German</option>
+        <option value="Italian">Italian</option>
+        <option value="Portuguese">Portuguese</option>
+        <option value="Russian">Russian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="TraditionalChinese">Traditional Chinese</option>
+        <option value="Korean">Korean</option>
+        <option value="Arabic">Arabic</option>
+      </select>
+    </div>
+    
+    <button id="save">Save Settings</button>
+    
+    <div id="status" class="status" style="display: none;"></div>
+    
+    <div style="margin-top: 30px;">
+      <button id="test" style="background: #34a853;">Test Connection</button>
+      <div id="testResult" class="status" style="display: none;"></div>
+    </div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>

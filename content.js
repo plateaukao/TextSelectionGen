@@ -142,6 +142,16 @@ function showTranslation(original, translation, targetLanguage) {
   `;
   
   dialogContainer.style.display = 'block';
+
+  // Add event listener to hide dialog when clicking outside
+  function handleOutsideClick(event) {
+    if (!dialogContainer.contains(event.target)) {
+      dialogContainer.style.display = 'none';
+      document.removeEventListener('click', handleOutsideClick);
+    }
+  }
+  
+  document.addEventListener('click', handleOutsideClick);
 }
 
 // Show error dialog

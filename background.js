@@ -42,12 +42,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           },
           body: JSON.stringify({
             model: result.model,
-            prompt: `You are a language translator. Please translate ONLY THE TEXT INSIDE <<>> to ${result.targetLanguage}.
+            prompt: `You are a language dictionary. Please explain ONLY THE TEXT INSIDE <<>> to ${result.targetLanguage}.
 Use the rest of the text as context to ensure accurate translation.
 
 Text: "${fullText}"
 
-Translate only what's inside <<>> brackets. Your response should contain ONLY the translation, with no additional explanation or commentary.`,
+Explain only what's inside <<>> brackets. Your response should contain ONLY the explanation, with no additional commentary.`,
             stream: false
           })
         });

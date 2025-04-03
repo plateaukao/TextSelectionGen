@@ -198,7 +198,7 @@ function handleTranslationRequest(fullText, selectedText) {
   if (fullText && selectedText) {
     chrome.runtime.sendMessage({
       action: "translateText",
-      text: fullText,
+      text: fullText.length < selectedText.length ? selectedText : fullText,
       selectedText: selectedText
     });
   }

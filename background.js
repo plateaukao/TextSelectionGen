@@ -9,22 +9,6 @@ chrome.runtime.onInstalled.addListener(() => {
       });
     }
   });
-
-  // Create context menu
-  chrome.contextMenus.create({
-    id: "translateSelection",
-    title: "Translate Selection with Ollama",
-    contexts: ["selection"]
-  });
-});
-
-// Handle context menu click
-chrome.contextMenus.onClicked.addListener((info, tab) => {
-  if (info.menuItemId === "translateSelection") {
-    chrome.tabs.sendMessage(tab.id, {
-      action: "getExpandedSelection"
-    });
-  }
 });
 
 // Listen for messages from content script
@@ -42,12 +26,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
           },
           body: JSON.stringify({
             model: result.model,
-            prompt: `You are a language dictionary. Please explain ONLY THE TEXT INSIDE <<>> to ${result.targetLanguage}.
+            prompt: `You are a language translator. Please translate ONLY THE TEXT INSIDE <<>> to ${result.targetLanguage}.
 Use the rest of the text as context to ensure accurate translation.
 
 Text: "${fullText}"
 
-Explain only what's inside <<>> brackets. Your response should contain ONLY the explanation, with no additional commentary.`,
+Translate only what's inside <<>> brackets. Your response should contain ONLY the translation, with no additional explanation or commentary.`,
             stream: false
           })
         });
